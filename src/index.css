@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&display=swap');
+@import 'tailwindcss';
+
+:root {
+  --bg: #f5f6f4;
+  --surface: #ffffff;
+  --surface-muted: #eef1f3;
+  --text: #182433;
+  --text-muted: #5f6b7a;
+  --border: #d6dce2;
+  --accent: #1f3650;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: 'Source Sans 3', 'Gill Sans', 'Trebuchet MS', sans-serif;
+  background:
+    radial-gradient(circle at 80% -10%, #e9eef3 0%, transparent 40%),
+    radial-gradient(circle at 0% 100%, #ecefed 0%, transparent 38%),
+    var(--bg);
+  color: var(--text);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+@layer components {
+  .page-shell {
+    @apply mx-auto w-full max-w-6xl px-6 sm:px-8 lg:px-12;
+  }
+
+  .section-space {
+    @apply py-16 sm:py-20 lg:py-24;
+  }
+
+  .section-heading {
+    @apply text-3xl font-bold sm:text-4xl;
+  }
+
+  .card-surface {
+    @apply rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-6 shadow-[0_12px_30px_rgba(15,23,42,0.04)];
+  }
+
+  .industry-pill {
+    @apply rounded-full border border-[var(--border)] bg-[var(--surface-muted)] px-4 py-2 text-sm font-semibold text-[var(--text)];
+  }
+
+  .cta-button {
+    @apply items-center justify-center rounded-full bg-[var(--accent)] px-6 py-3 text-base font-semibold text-white transition hover:bg-[#233f5f] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)];
+  }
+
+  .inline-link {
+    @apply font-semibold text-[var(--accent)] underline decoration-[var(--border)] decoration-2 underline-offset-4 transition hover:decoration-[var(--accent)];
+  }
+
+  .label {
+    @apply text-sm font-semibold uppercase tracking-wide text-[var(--text-muted)];
+  }
+
+  .form-field {
+    @apply flex flex-col gap-2 text-sm font-semibold text-[var(--text)];
+  }
+
+  .input-field {
+    @apply rounded-xl border border-[var(--border)] bg-[var(--surface)] px-4 py-3 text-base font-normal text-[var(--text)] placeholder:text-[var(--text-muted)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)];
+  }
+}
