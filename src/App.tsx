@@ -79,7 +79,7 @@ function App() {
     <div className="pb-20">
       <header className="page-shell py-6">
         <div className="flex items-center justify-between rounded-full border border-[var(--border)] bg-[var(--surface)] px-5 py-3 shadow-sm">
-          <span className="text-sm font-semibold tracking-[0.14em] text-[var(--text-muted)] sm:text-base">
+          <span className="text-sm font-semibold tracking-[0.14em] text-[var(--text)] sm:text-base">
             UNITED VOICES INTERPRETATION
           </span>
           <a className="inline-link hidden sm:inline-flex" href="#contact">

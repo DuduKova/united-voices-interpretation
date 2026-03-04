@@ -2,13 +2,14 @@
 @import 'tailwindcss';
 
 :root {
-  --bg: #f5f6f4;
+  --bg: #ffffff;
   --surface: #ffffff;
-  --surface-muted: #eef1f3;
-  --text: #182433;
-  --text-muted: #5f6b7a;
-  --border: #d6dce2;
-  --accent: #1f3650;
+  --surface-muted: #e9f7f5;
+  --text: #0b3d3a;
+  --text-muted: #2f3a45;
+  --border: #2f3a4542;
+  --accent: #2ec4b6;
+  --accent-hover: #26a99d;
 }
 
 * {
@@ -24,10 +25,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   font-family: 'Source Sans 3', 'Gill Sans', 'Trebuchet MS', sans-serif;
-  background:
-    radial-gradient(circle at 80% -10%, #e9eef3 0%, transparent 40%),
-    radial-gradient(circle at 0% 100%, #ecefed 0%, transparent 38%),
-    var(--bg);
+  background: var(--bg);
   color: var(--text);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -52,7 +50,7 @@ body {
   }
 
   .card-surface {
-    @apply rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-6 shadow-[0_12px_30px_rgba(15,23,42,0.04)];
+    @apply rounded-2xl border border-[var(--border)] bg-[var(--surface-muted)] p-6 shadow-[0_12px_30px_rgba(11,61,58,0.06)];
   }
 
   .industry-pill {
@@ -60,11 +58,11 @@ body {
   }
 
   .cta-button {
-    @apply items-center justify-center rounded-full bg-[var(--accent)] px-6 py-3 text-base font-semibold text-white transition hover:bg-[#233f5f] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)];
+    @apply items-center justify-center rounded-full bg-[var(--accent)] px-6 py-3 text-base font-semibold text-white transition hover:bg-[var(--accent-hover)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)];
   }
 
   .inline-link {
-    @apply font-semibold text-[var(--accent)] underline decoration-[var(--border)] decoration-2 underline-offset-4 transition hover:decoration-[var(--accent)];
+    @apply font-semibold text-[var(--accent)] underline decoration-[var(--text-muted)] decoration-2 underline-offset-4 transition hover:text-[var(--accent-hover)] hover:decoration-[var(--accent-hover)];
   }
 
   .label {
@@ -76,6 +74,6 @@ body {
   }
 
   .input-field {
-    @apply rounded-xl border border-[var(--border)] bg-[var(--surface)] px-4 py-3 text-base font-normal text-[var(--text)] placeholder:text-[var(--text-muted)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)];
+    @apply rounded-xl border border-[var(--border)] bg-[var(--surface)] px-4 py-3 text-base font-normal text-[var(--text-muted)] placeholder:text-[var(--text-muted)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)];
   }
 }
