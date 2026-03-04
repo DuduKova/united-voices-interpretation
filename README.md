@@ -53,4 +53,4 @@ vercel deploy --prod -y
 
 Live URL (updated after deployment):
 
-- `TBD`
+- `https://united-voices.vercel.app`
