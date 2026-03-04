@@ -54,25 +54,64 @@ const emptyFormValues: ContactFormValues = {
   message: '',
 }
 
+const contactEmail = 'danielladelatorrejimenez@gmail.com'
+
 function App() {
   const [formValues, setFormValues] = useState<ContactFormValues>(emptyFormValues)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitMessage, setSubmitMessage] = useState('')
 
   const updateField =
     (field: keyof ContactFormValues) =>
     (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      setSubmitMessage('')
       setFormValues((previous) => ({
         ...previous,
         [field]: event.target.value,
       }))
     }
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    console.log({
-      ...formValues,
-      submittedAt: new Date().toISOString(),
-    })
-    setFormValues(emptyFormValues)
+    setIsSubmitting(true)
+    setSubmitMessage('')
+
+    const subject = `New interpretation request from ${formValues.name}`
+    const bodyLines = [
+      `Name: ${formValues.name}`,
+      `Email: ${formValues.email}`,
+      '',
+      'Message:',
+      formValues.message,
+    ]
+
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${contactEmail}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          ...formValues,
+          _subject: subject,
+        }),
+      })
+
+      if (!response.ok) {
+        throw new Error('Email submission failed')
+      }
+
+      setSubmitMessage('Message sent successfully. We will contact you soon.')
+    } catch (error) {
+      const mailtoSubject = encodeURIComponent(subject)
+      const mailtoBody = encodeURIComponent(bodyLines.join('\n'))
+      window.location.href = `mailto:${contactEmail}?subject=${mailtoSubject}&body=${mailtoBody}`
+      setSubmitMessage('Email app opened as fallback. Please send the pre-filled draft.')
+    } finally {
+      setIsSubmitting(false)
+      setFormValues(emptyFormValues)
+    }
   }
 
   return (
@@ -89,16 +128,13 @@ function App() {
       </header>
 
       <main>
-        <section className="page-shell section-space">
-          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.16em] text-[var(--text-muted)]">
-            Professional Interpretation Services
-          </p>
-          <h1 className="max-w-3xl text-balance text-4xl font-bold leading-tight text-[var(--text)] sm:text-5xl lg:text-6xl">
-            United Voices Interpretation
-          </h1>
-          <p className="mt-6 max-w-2xl text-2xl text-[var(--text-muted)] sm:text-3xl">
-            Many Voices, One Understanding
-          </p>
+        <section className="page-shell section-space flex flex-col items-center text-center">
+          <h1 className="sr-only">United Voices Interpretation</h1>
+          <img
+            alt="United Voices Interpretation logo"
+            className="w-full max-w-3xl rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[0_16px_35px_rgba(11,61,58,0.08)] sm:p-6"
+            src="/logo-source.jpeg"
+          />
           <a className="cta-button mt-10 inline-flex" href="#contact">
             Request a Quote
           </a>
@@ -143,22 +179,29 @@ function App() {
           <h2 className="section-heading">Contact</h2>
           <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_1.4fr]">
             <article className="card-surface space-y-4">
+              <div className="flex flex-col items-center text-center">
+                <img
+                  alt="United Voices Interpretation owner portrait"
+                  className="h-32 w-32 rounded-full border-4 border-[var(--accent)] object-cover object-[center_20%] shadow-[0_10px_24px_rgba(46,196,182,0.28)]"
+                  src="/owner-avatar.jpg"
+                />
+                <p className="mt-3 text-sm font-semibold uppercase tracking-[0.09em] text-[var(--text-muted)]">
+                  Direct Owner Contact
+                </p>
+              </div>
               <p className="text-base text-[var(--text-muted)]">
                 Share your event details and preferred language coverage. We will respond with a custom
                 quote.
               </p>
               <div>
                 <p className="label">Email</p>
-                <a
-                  className="inline-link mt-1 inline-flex"
-                  href="mailto:danielladelatorrejimenez@gmail.com"
-                >
-                  danielladelatorrejimenez@gmail.com
+                <a className="contact-link break-all" href={`mailto:${contactEmail}`}>
+                  {contactEmail}
                 </a>
               </div>
               <div>
                 <p className="label">WhatsApp</p>
-                <a className="inline-link mt-1 inline-flex" href="https://wa.me/525531132066">
+                <a className="contact-link" href="https://wa.me/525531132066">
                   +52 55 3113 2066
                 </a>
               </div>
@@ -200,9 +243,14 @@ function App() {
                   value={formValues.message}
                 />
               </label>
-              <button className="cta-button" type="submit">
-                Send Message
+              <button
+                className="cta-button disabled:cursor-not-allowed disabled:opacity-70"
+                disabled={isSubmitting}
+                type="submit"
+              >
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
+              {submitMessage && <p className="text-sm text-[var(--text-muted)]">{submitMessage}</p>}
             </form>
           </div>
         </section>
