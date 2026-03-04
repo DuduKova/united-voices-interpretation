@@ -36,12 +36,15 @@ npm run preview
 
 - Main page content and section cards:
   - `/Users/user/Documents/united-voices/src/App.tsx`
-- Contact placeholders (email + WhatsApp):
+- Contact values (email + WhatsApp):
   - `/Users/user/Documents/united-voices/src/App.tsx` in the `Contact` section
 - SEO tags (`title`, description, Open Graph, canonical URL):
   - `/Users/user/Documents/united-voices/index.html`
-- Favicon placeholder:
-  - `/Users/user/Documents/united-voices/public/favicon.svg`
+- Branding assets:
+  - `/Users/user/Documents/united-voices/public/og-image.png` (1200x630 social image)
+  - `/Users/user/Documents/united-voices/public/favicon-512.png` (favicon/master icon)
+  - `/Users/user/Documents/united-voices/public/favicon-192.png` (favicon)
+  - `/Users/user/Documents/united-voices/public/apple-touch-icon.png` (iOS icon)
 
 ## Deployment
 

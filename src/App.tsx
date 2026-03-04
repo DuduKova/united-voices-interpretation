@@ -149,14 +149,17 @@ function App() {
               </p>
               <div>
                 <p className="label">Email</p>
-                <a className="inline-link mt-1 inline-flex" href="mailto:hello@unitedvoicesinterpretation.com">
-                  hello@unitedvoicesinterpretation.com
+                <a
+                  className="inline-link mt-1 inline-flex"
+                  href="mailto:danielladelatorrejimenez@gmail.com"
+                >
+                  danielladelatorrejimenez@gmail.com
                 </a>
               </div>
               <div>
                 <p className="label">WhatsApp</p>
-                <a className="inline-link mt-1 inline-flex" href="https://wa.me/10000000000">
-                  +1 (000) 000-0000
+                <a className="inline-link mt-1 inline-flex" href="https://wa.me/525531132066">
+                  +52 55 3113 2066
                 </a>
               </div>
             </article>
