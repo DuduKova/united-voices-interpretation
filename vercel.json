@@ -1,0 +1,21 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.unitedvoicesmx.com"
+        }
+      ],
+      "destination": "https://unitedvoicesmx.com/$1",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/((?!.*\\.).*)",
+      "destination": "/"
+    }
+  ]
+}

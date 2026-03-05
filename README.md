@@ -1,59 +1,70 @@
 # United Voices Interpretation
 
-Single-page landing site for **United Voices Interpretation** built with **Vite + React + Tailwind CSS**.
+Multi-page SEO-focused website for **United Voices Interpretation** built with **Vite + React + Tailwind CSS**.
+
+## What Is Implemented
+
+- Multi-page SEO routes:
+  - `/`
+  - `/contact`
+  - `/services/simultaneous-interpretation-mexico-city`
+  - `/services/consecutive-interpretation-mexico-city`
+  - `/services/remote-interpretation-mexico-city`
+  - `/services/subtitling-voiceover-mexico-city`
+  - `/industries/legal-interpretation-mexico-city`
+  - `/industries/healthcare-interpretation-mexico-city`
+- Dynamic SEO metadata per route (title, description, canonical, OG/Twitter).
+- JSON-LD structured data (Organization, ProfessionalService, Service, FAQPage).
+- Technical SEO files:
+  - `/public/robots.txt`
+  - `/public/sitemap.xml`
+- SPA route rewrites for Vercel via `vercel.json`.
+- Contact section with owner avatar + working form submit flow.
 
 ## Local Development
 
-1. Install dependencies:
-
 ```bash
 npm install
-```
-
-2. Start the dev server:
-
-```bash
 npm run dev
 ```
 
-3. Open the local URL shown in the terminal (usually `http://localhost:5173`).
-
 ## Build and Preview
-
-Create a production build:
 
 ```bash
 npm run build
-```
-
-Preview the production build locally:
-
-```bash
 npm run preview
 ```
 
-## Content and Settings You May Edit
-
-- Main page content and section cards:
-  - `/Users/user/Documents/united-voices/src/App.tsx`
-- Contact values (email + WhatsApp):
-  - `/Users/user/Documents/united-voices/src/App.tsx` in the `Contact` section
-- SEO tags (`title`, description, Open Graph, canonical URL):
-  - `/Users/user/Documents/united-voices/index.html`
-- Branding assets:
-  - `/Users/user/Documents/united-voices/public/og-image.png` (1200x630 social image)
-  - `/Users/user/Documents/united-voices/public/favicon-512.png` (favicon/master icon)
-  - `/Users/user/Documents/united-voices/public/favicon-192.png` (favicon)
-  - `/Users/user/Documents/united-voices/public/apple-touch-icon.png` (iOS icon)
-
-## Deployment
-
-Production deployment is done with Vercel:
+## SEO / Domain Environment Variables
 
 ```bash
-vercel deploy --prod -y
+VITE_SITE_URL=https://unitedvoicesmx.com
+VITE_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+VITE_GOOGLE_SITE_VERIFICATION=google-verification-token
+VITE_BING_SITE_VERIFICATION=bing-verification-token
 ```
 
-Live URL (updated after deployment):
+## Domain + Tooling Setup Docs
 
-- `https://united-voices.vercel.app`
+- Domain + Search Console + GA4 workflow:
+  - `/Users/user/Documents/united-voices/docs/seo-operations.md`
+- Google Business Profile content pack:
+  - `/Users/user/Documents/united-voices/docs/google-business-profile-pack.md`
+
+## Free SEO Tool Stack
+
+- Google Search Console
+- Google Analytics (GA4)
+- Google Business Profile
+- Bing Webmaster Tools
+
+## Optional Paid Tools
+
+- Ahrefs
+- Semrush
+- Screaming Frog
+
+## Live URL (Current)
+
+- Primary domain: `https://unitedvoicesmx.com` (after DNS propagation)
+- Vercel fallback: `https://united-voices.vercel.app`
